@@ -1,0 +1,6 @@
+{
+  "name": "JENYX - Streaming Accounts & Profiles",
+  "description": "Tu mundo digital, a tu estilo. Tienda y panel de administración para cuentas y perfiles de streaming con estilo gótico neón.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

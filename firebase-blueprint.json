@@ -1,0 +1,165 @@
+{
+  "entities": {
+    "Category": {
+      "title": "Category",
+      "description": "Category for streaming services like Netflix, Disney+, etc.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "icon": { "type": "string" },
+        "description": { "type": "string" },
+        "active": { "type": "boolean" },
+        "order": { "type": "number" }
+      },
+      "required": ["name", "slug"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Streaming service product (profile or full account)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["perfil", "cuenta_completa"] },
+        "duration": { "type": "string" },
+        "price": { "type": "number" },
+        "originalPrice": { "type": "number" },
+        "description": { "type": "string" },
+        "features": { "type": "array" },
+        "badge": { "type": "string" },
+        "active": { "type": "boolean" },
+        "image": { "type": "string" }
+      },
+      "required": ["name", "categoryId", "type", "price"]
+    },
+    "Account": {
+      "title": "Account",
+      "description": "Master streaming account credentials and profiles inventory",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "serviceName": { "type": "string" },
+        "email": { "type": "string" },
+        "password": { "type": "string" },
+        "pin": { "type": "string" },
+        "maxProfiles": { "type": "number" },
+        "notes": { "type": "string" },
+        "status": { "type": "string", "enum": ["activa", "suspendida", "por_renovar"] },
+        "expirationDate": { "type": "string" },
+        "profiles": { "type": "array" }
+      },
+      "required": ["email", "password", "serviceName"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Client order tracking and credentials assignment",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerWhatsApp": { "type": "string" },
+        "customerEmail": { "type": "string" },
+        "productId": { "type": "string" },
+        "productName": { "type": "string" },
+        "productType": { "type": "string" },
+        "price": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "receiptUrl": { "type": "string" },
+        "status": { "type": "string", "enum": ["pendiente", "revision", "aprobado", "entregado", "cancelado", "vencido"] },
+        "createdAt": { "type": "string" },
+        "expiresAt": { "type": "string" },
+        "assignedAccountEmail": { "type": "string" },
+        "assignedAccountPassword": { "type": "string" },
+        "assignedProfileName": { "type": "string" },
+        "assignedProfilePin": { "type": "string" },
+        "renewalReminderSent": { "type": "boolean" },
+        "notes": { "type": "string" }
+      },
+      "required": ["orderNumber", "customerName", "customerWhatsApp", "productId", "price", "status"]
+    },
+    "Client": {
+      "title": "Client",
+      "description": "Registered client data and subscriptions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "email": { "type": "string" },
+        "totalOrders": { "type": "number" },
+        "activeSubscriptions": { "type": "number" },
+        "lastOrderDate": { "type": "string" },
+        "nextExpirationDate": { "type": "string" },
+        "status": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "whatsapp"]
+    },
+    "Setting": {
+      "title": "Setting",
+      "description": "Store branding, logo, colors and payment instructions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "businessName": { "type": "string" },
+        "motto": { "type": "string" },
+        "logoUrl": { "type": "string" },
+        "accentColor": { "type": "string" },
+        "whatsappNumber": { "type": "string" },
+        "paymentInstructions": { "type": "object" },
+        "announcement": { "type": "string" }
+      },
+      "required": ["businessName"]
+    },
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Admin or seller user role for panel access",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "vendedor"] },
+        "active": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/categories/{categoryId}": {
+      "schema": "Category",
+      "description": "Categories of streaming services"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Products for sale (profiles and complete accounts)"
+    },
+    "/accounts/{accountId}": {
+      "schema": "Account",
+      "description": "Streaming master accounts with profiles and credentials"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Customer purchase orders and fulfillment status"
+    },
+    "/clients/{clientId}": {
+      "schema": "Client",
+      "description": "Customer contact info and subscription history"
+    },
+    "/settings/{settingId}": {
+      "schema": "Setting",
+      "description": "Store branding and payment settings"
+    },
+    "/admin_users/{userId}": {
+      "schema": "AdminUser",
+      "description": "Admin panel authorized operators"
+    }
+  }
+}

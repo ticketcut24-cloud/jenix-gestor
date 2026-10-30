@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #07040C;
+    color: #FBEFF6;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-cinzel {
+    font-family: 'Cinzel Decorative', cursive, serif;
+  }
+}
+
+/* Custom Gothic Neon Glows & Gradients */
+.goth-bg {
+  background-color: #07040C;
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(255, 46, 147, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 85%, rgba(122, 18, 54, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(194, 24, 122, 0.04) 0%, transparent 60%);
+}
+
+.goth-card {
+  background-color: #12091A;
+  border: 1px solid rgba(255, 46, 147, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255, 46, 147, 0.05);
+  transition: all 0.25s ease-in-out;
+}
+
+.goth-card:hover {
+  border-color: rgba(255, 46, 147, 0.5);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255, 46, 147, 0.15);
+}
+
+.neon-btn-primary {
+  background: linear-gradient(135deg, #FF2E93 0%, #C2187A 100%);
+  color: #FFFFFF;
+  box-shadow: 0 0 15px rgba(255, 46, 147, 0.4);
+  transition: all 0.2s ease-in-out;
+}
+
+.neon-btn-primary:hover {
+  background: linear-gradient(135deg, #FF45A2 0%, #D81B84 100%);
+  box-shadow: 0 0 25px rgba(255, 46, 147, 0.7);
+  transform: translateY(-1px);
+}
+
+.neon-btn-secondary {
+  background-color: rgba(255, 46, 147, 0.1);
+  border: 1px solid rgba(255, 46, 147, 0.4);
+  color: #FF8CC6;
+  transition: all 0.2s ease;
+}
+
+.neon-btn-secondary:hover {
+  background-color: rgba(255, 46, 147, 0.2);
+  border-color: #FF2E93;
+  color: #FFFFFF;
+  box-shadow: 0 0 15px rgba(255, 46, 147, 0.3);
+}
+
+.sidebar-active-item {
+  background: linear-gradient(90deg, rgba(255, 46, 147, 0.85) 0%, rgba(194, 24, 122, 0.85) 100%);
+  box-shadow: 0 0 20px rgba(255, 46, 147, 0.45);
+  color: #FFFFFF !important;
+}
+
+.neon-text-glow {
+  text-shadow: 0 0 10px rgba(255, 46, 147, 0.6), 0 0 20px rgba(255, 46, 147, 0.3);
+}
+
+.neon-text-subtle {
+  text-shadow: 0 0 8px rgba(255, 140, 198, 0.4);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0612;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 46, 147, 0.35);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 46, 147, 0.6);
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 10px rgba(255, 46, 147, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(255, 46, 147, 0.8));
+  }
+}
+
+.pulse-glow {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
